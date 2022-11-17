@@ -1,16 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientJsonpModule, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './view/home/home.component';
+import { LivrosComponent } from './view/livros/livros.component';
+import { LivroDetalheComponent } from './view/livro-detalhe/livro-detalhe.component';
+import { LivrosCategoriaComponent } from './view/livros-categoria/livros-categoria.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    LivrosComponent,
+    LivroDetalheComponent,
+    LivrosCategoriaComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
