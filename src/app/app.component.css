@@ -1,6 +1,28 @@
+/* .logo-font {
+    font-family: 'Yellowtail', cursive;
+    font-size: 1.5rem;
+} */
+
+*:not(i) {
+    font-family: 'Helvetica';
+}
+
+.class-item-img {
+    width: 150px;
+    height: 50px;
+}   
+
+.form {
+    width: 70%;
+}
+
+.container-fluid {
+    width: 90%;
+}
+
 .inp {
     outline:0;
-    width:500px;
+    width:90%;
     padding:5px 5px 5px 10px;
     border-radius:12px;
     border:none;
@@ -18,14 +40,14 @@
 }
 
 .barraCategoria {
-    background-color: #5a189a;
+    background-color: #ffd700;
     display: flex;
     justify-content: center;
 }
 
 .barraCategoria ul {
     display: flex;
-    background-color:#5a189a;
+    background-color:#ffd700;
     margin: 0px;
     flex-wrap: wrap;
     justify-content: center;
@@ -34,13 +56,13 @@
 .barraCategoria ul li{
     list-style: none;
     padding: 8px;
-    background-color:#5a189a;
+    background-color:#ffd700;
 }
 
 .barraCategoria ul li a {
     color: black;
     cursor: pointer;
-    background-color:#5a189a;
+    background-color:#ffd700;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 700;
 }

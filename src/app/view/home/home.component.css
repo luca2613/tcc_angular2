@@ -1,3 +1,9 @@
+*{
+    font-family: 'Helvetica';
+}
+
+.img_banner {}
+
 h1 {
     color: black;
     font-size: 1.8rem;
@@ -6,6 +12,50 @@ h1 {
 
 main {
     margin: 20px;
+}
+
+.bannerHome {
+    background-color: #439ae0;
+    width: 100%;
+    margin: 0px;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.bannerChild {
+    flex: 1;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.bannerChild p:nth-child(1) {
+    font-weight: 700;
+    font-size: 1.5em;
+    font-family: cursive;
+    color: white;
+} 
+
+.bannerChild p:nth-child(2) {
+    font-size: 1.0em;
+    color: white;
+} 
+
+.textBanner a {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    background-color: #e56717;
+    padding: 11px;
+    color: white;
+}
+
+.bannerChild:nth-child(1) {
+}
+
+.bannerChild:nth-child(2) {
 }
 
 .containerLivros {

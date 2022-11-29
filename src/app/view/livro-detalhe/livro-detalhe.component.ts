@@ -23,6 +23,7 @@ export class LivroDetalheComponent implements OnInit {
     });
 
     this.service.getLivroById(this.id);
+    this.service.getLivroByCategoria(this.categoria);
   }
 
 }
