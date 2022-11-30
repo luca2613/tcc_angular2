@@ -1,0 +1,62 @@
+<main>
+    <div class="topo2">
+        <div class="tituloPagina"><h1>Meus livros</h1></div>
+        <div class="btnCadastro"><button id="btnCadastro1" (click)="show()"><i class="fa-solid fa-circle-plus"></i>Cadastrar</button></div>
+    </div>
+
+    <form *ngIf="isVisible" id="formulario" method="post" action="cadastro.php" enctype="multipart/form-data">
+        <section class="base df dc">
+            <div class="df jst">
+                <div class="df dc width1">
+                    <div class="container">
+                        <div class="input-file-upload">
+                            <div class="upload-btn">
+                                <button class="btn">Selecionar imagem</button>
+                                <input type="file" name="upfile" id="upfile" onchange="readURL(this); ">
+                            </div>
+                            <img class="upload_img" id="file_upload">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="df dc width2">
+                    <label for="nm_categoria">Nome do livro</label>
+                    <input type="text" name="nm_livro" id="nm_livro">
+                    
+                    <label for="ds_livro">Descrição do livro</label>
+                    <input type="text" name="ds_livro" id="ds_livro">
+                    
+                    <label for="cd_categoria">Categoria do livro</label>
+                    <select name="categoriaS" id="categoriaS" (change)="changeSelect($event)">
+                        <option *ngFor="let c of this.service.categoria" [value]="c.cd_categoria">{{c.nm_categoria}}</option>
+                    </select>
+
+                    <label for="dt_lancamento">Data de lançamento</label>
+                    <input type="date" name="dt_lancamento" id="dt_lancamento">
+                </div>
+            </div>
+            
+            <input type="submit" class="btn_confirmar" value="Confirmar">
+            <div id="resultado"></div>
+            
+
+        </section>
+    </form>
+
+    <div class="containerLivros">
+        <div *ngFor="let l of this.service.livroAutor" class='livro'>
+            <a href='#'>
+                <img src="../../assets/uploads/livro1.jpg" class="class-item-img" alt="">
+            </a>
+            <section>
+                <div class='tituloLivro'><span>
+                    <a [routerLink]="['/livro']" [queryParams]="{ id: l.cd_livro, nome: l.nm_livro, categoria: l.nm_categoria }">{{l.nm_livro}}</a>
+                </span></div>
+                <div class='btns'>
+                    <div class="editar"><a href="#">Editar</a></div>
+                    <div class="lixeira"><button class="btn_lixeira" (click)="service.deleteLivro(l.cd_livro, this.id)">Excluir</button></div>
+                </div>
+            </section>
+        </div>
+    </div>
+</main>

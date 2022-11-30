@@ -14,6 +14,8 @@ export class LivrosCategoriaComponent implements OnInit {
   constructor(public service:ControllerService,public router:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.service.menuPrincipal = true;
+    this.service.menuAutor = false;
     this.router.paramMap.subscribe((params) => {
       this.categoria = params.get('nm_categoria');
     });

@@ -16,7 +16,7 @@ main {
 }
 
 .livro {
-    width: calc(1000px / 5);
+    width: calc(1000px - 5);
     max-width: 200px;
     display: flex;
     margin: 10px;

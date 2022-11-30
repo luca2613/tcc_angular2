@@ -3,20 +3,43 @@ import {HttpClient} from '@angular/common/http';
 import { CategoriaResponse } from '../model/Categoria';
 import { LivroResponse } from '../model/Livro';
 import { AutorResponse } from '../model/Autor';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ControllerService {
 
+  menuPrincipal!: boolean;
+  menuAutor!: boolean;
+
   apiUrl = 'http://localhost:3000';
   
   categoria: CategoriaResponse[] | null = null;
   livro: LivroResponse[] | null = null;
   livroCategoria: LivroResponse[] | null = null;
-  autor: AutorResponse[] | null = null;
+  livroAutor: LivroResponse[] | null = null;
+  // autor: AutorResponse[] | null = null;
 
   constructor(private http:HttpClient) { }
+
+
+  login(data:any):Observable<any> {
+    return this.http.post(`${this.apiUrl}/autor/login`,data);
+  }
+
+  getToken() {
+    return localStorage.getItem('token');
+  } 
+
+  getId() {
+    return localStorage.getItem('id');
+  }
+
+  getNome() {
+    return localStorage.getItem('nome');
+  }
+  
 
   // categoria
   getCategorias() {
@@ -70,10 +93,35 @@ export class ControllerService {
     ).subscribe(
       (Response) => {
         this.livroCategoria = Response;
-        console.log(this.livroCategoria)
       }
     )
     return false;
+  }
+
+  getLivrosByAutor(id:any) {
+    this.http.get<LivroResponse[]>(
+      this.apiUrl + "/livros/livrosAutor/" + id,
+    ).subscribe(
+      (Response) => {
+        this.livroAutor = Response;
+      },
+    )
+    return false;
+  }
+
+  deleteLivro( id: any, autor:any) {
+    this.http.delete(
+      this.apiUrl + '/livros/' + id, {
+        headers: { 'Authorization': 'Bearer ' + this.getToken() }
+      }
+    ).subscribe(
+      (response) => {
+        this.getLivrosByAutor(autor);
+      },
+      (error) => {
+        alert(error);
+      }
+    );
   }
 
 }

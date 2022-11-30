@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AutorDetalheComponent } from './view/autor-detalhe/autor-detalhe.component';
+import { AutorPainelComponent } from './view/autor-painel/autor-painel.component';
 import { HomeComponent } from './view/home/home.component';
 import { LivroDetalheComponent } from './view/livro-detalhe/livro-detalhe.component';
 import { LivrosCategoriaComponent } from './view/livros-categoria/livros-categoria.component';
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: 'livro', component: LivroDetalheComponent},
   {path: 'livros/:nm_categoria', component: LivrosCategoriaComponent},
   {path: 'login', component: LoginAutorComponent},
-  {path: 'autor', component: AutorDetalheComponent}
+  {path: 'autor', component: AutorDetalheComponent},
+  {path: 'painel', component: AutorPainelComponent}
 ];
 
 @NgModule({

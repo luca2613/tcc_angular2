@@ -9,6 +9,9 @@ import { LivroDetalheComponent } from './view/livro-detalhe/livro-detalhe.compon
 import { LivrosCategoriaComponent } from './view/livros-categoria/livros-categoria.component';
 import { LoginAutorComponent } from './view/login-autor/login-autor.component';
 import { AutorDetalheComponent } from './view/autor-detalhe/autor-detalhe.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ControllerService } from './controller/controller.service';
+import { AutorPainelComponent } from './view/autor-painel/autor-painel.component';
 
 @NgModule({
   declarations: [
@@ -18,14 +21,24 @@ import { AutorDetalheComponent } from './view/autor-detalhe/autor-detalhe.compon
     LivroDetalheComponent,
     LivrosCategoriaComponent,
     LoginAutorComponent,
-    AutorDetalheComponent
+    AutorDetalheComponent,
+    AutorPainelComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [ 
+    ControllerService
+    // {
+    //   provide:HTTP_INTERCEPTORS,
+    //   useClass:TokeninterceptorInterceptor,
+    //   multi:true
+    // }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

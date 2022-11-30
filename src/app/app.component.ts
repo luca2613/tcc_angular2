@@ -14,4 +14,11 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.service.getCategorias();
   }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['login']).then(()=>{
+      window.location.reload();
+    });
+  }
 }

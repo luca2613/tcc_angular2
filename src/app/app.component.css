@@ -12,6 +12,15 @@
     height: 50px;
 }   
 
+.class-item-img2 {
+    width: 120px;
+    height: 50px;
+}  
+
+.navAutor {
+    padding: 0;
+}
+
 .form {
     width: 70%;
 }
@@ -65,4 +74,14 @@
     background-color:#ffd700;
     text-decoration: none;
     font-weight: 700;
+}
+
+.listaAutor li a, button {
+    color: black;
+    font-weight: 500;
+}
+
+.sair {
+    background: none;
+    border: none;
 }

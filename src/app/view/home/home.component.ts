@@ -13,6 +13,8 @@ export class HomeComponent implements OnInit {
   constructor(public service:ControllerService,public router:Router) { }
 
   ngOnInit(): void {
+    this.service.menuPrincipal = true;
+    this.service.menuAutor = false;
     this.service.getLivrosByLast();
   }
 

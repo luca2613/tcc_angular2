@@ -1,4 +1,4 @@
-<header>
+<header *ngIf="this.service.menuPrincipal">
   <nav class="navbar navbar-expand-lg" style="background-color:#fded00">
     <div class="container-fluid">
       <a class="navbar-brand logo-font" [routerLink]="['/']"><img src="../../assets/images/logo.png" class="class-item-img" alt=""></a>
@@ -20,5 +20,28 @@
     </ul>
 </section>
 </header>
+
+<nav *ngIf="this.service.menuAutor" class="navbar navbar-expand-lg navAutor" style="background-color:#fded00">
+  <div class="container-fluid">
+    <a class="navbar-brand logo-font" [routerLink]="['/painel']"><img src="../../assets/images/logo.png" class="class-item-img2" alt=""></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 listaAutor">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/painel']">Livros</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="login">Perfil</a>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link sair" (click)="logout()">Sair</button>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <router-outlet></router-outlet>

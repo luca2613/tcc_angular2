@@ -17,6 +17,9 @@ export class LivroDetalheComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.service.menuPrincipal = true;
+    this.service.menuAutor = false;
+
     this.router.queryParams.subscribe((params) => {
       this.id = params['id'];
       this.categoria = params['categoria'];
