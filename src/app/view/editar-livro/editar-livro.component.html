@@ -5,9 +5,11 @@
                 <div class="container">
                     <div class="input-file-upload">
                         <div class="upload-btn">
-                            <button class="btn">Selecionar imagem</button>
-                            <input type="file" name="upfile" (change)="selectImage($event)" required>
-                            {{this.images.name}}
+                            <div class="foto">
+                                <button class="btn">Selecionar imagem</button>
+                                <input type="file" name="upfile" (change)="selectImage($event)" required>
+                                <img *ngIf="this.images" src="http://localhost:3000/uploads/{{this.images.name}}">
+                            </div>
                         </div>
                         
                     </div>
@@ -16,10 +18,10 @@
 
             <div class="df dc width2">
                 <label for="nm_categoria">Nome do livro</label>
-                <input type="text" name="nm_livro" id="nm_livro" [(ngModel)]="nm_livro"  required>
+                <input type="text" name="nm_livro" id="nm_livro" (change)="takeN($event)" [(ngModel)]="l.nm_livro"  required="required">
                 
                 <label for="ds_livro">Descrição do livro</label>
-                <input type="text" name="ds_livro" id="ds_livro" [(ngModel)]="ds_livro" required>
+                <input type="text" name="ds_livro" id="ds_livro" (change)="takeD($event)" [(ngModel)]="l.ds_livro" required>
                 
                 <label for="cd_categoria">Categoria do livro</label>
                 <select name="categoriaS" id="categoriaS" (change)="changeSelect($event)">

@@ -15,6 +15,7 @@ import { AutorPainelComponent } from './view/autor-painel/autor-painel.component
 import { EditarLivroComponent } from './view/editar-livro/editar-livro.component';
 import { LivroBuscaComponent } from './view/livro-busca/livro-busca.component';
 import { CadastroComponent } from './view/cadastro/cadastro.component';
+import { PerfilComponent } from './view/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CadastroComponent } from './view/cadastro/cadastro.component';
     AutorPainelComponent,
     EditarLivroComponent,
     LivroBuscaComponent,
-    CadastroComponent
+    CadastroComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,

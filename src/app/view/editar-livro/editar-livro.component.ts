@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ControllerService } from 'src/app/controller/controller.service';
+import { LivroResponse } from 'src/app/model/Livro';
 
 @Component({
   selector: 'app-editar-livro',
@@ -19,7 +20,7 @@ export class EditarLivroComponent implements OnInit {
   id = this.service.getId();
   nome = this.service.getNome();
   select:any;
-  images:any;
+  images:any = '';
   nm_livro: string = '';
   ds_livro:string = '';
   dt_lancamento: string = '';
@@ -40,9 +41,17 @@ export class EditarLivroComponent implements OnInit {
   selectImage(event:any) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      this.images = file.name;
+      this.images = file;
       console.log(this.images);
     }
+  }
+
+  takeN(e:any) {
+    this.nm_livro = e.target.value;
+  }
+
+  takeD(e:any) {
+    this.nm_livro = e.target.value;
   }
 
   upload(){
@@ -54,6 +63,7 @@ export class EditarLivroComponent implements OnInit {
   }
 
   updateLivro() {
+    console.log(this.nm_livro)
     this.service.patchLivro({
       cd_categoria: this.select,
       nm_livro: this.nm_livro,
@@ -62,7 +72,7 @@ export class EditarLivroComponent implements OnInit {
       cd_img_livro: this.images.name
     },this.idLivro).subscribe((res) => {
       if (res.status == true) {
-        console.log(this.images);
+        console.log(this.nm_livro);
         alert("alterado");
         this.upload(); 
         this.route.navigate(['painel']);

@@ -297,3 +297,16 @@ h1 {
     color: white;
 }
 
+.upload-btn {
+    width: 100%;
+    height: auto;
+}
+
+
+
+.foto img {
+    margin-top: 10px;
+    width: 100%;
+    height: 250px;
+}
+

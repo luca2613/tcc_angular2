@@ -11,8 +11,11 @@
                     <div class="container">
                         <div class="input-file-upload">
                             <div class="upload-btn">
-                                <button class="btn">Selecionar imagem</button>
-                                <input type="file" name="upfile" (change)="selectImage($event)" required>
+                                <div class="foto">
+                                    <button class="btn">Selecionar imagem</button>
+                                    <input type="file" name="upfile" (change)="selectImage($event)" required>
+                                    <img *ngIf="this.images" src="http://localhost:3000/uploads/{{this.images.name}}">
+                                </div>
                             </div>
                             
                         </div>

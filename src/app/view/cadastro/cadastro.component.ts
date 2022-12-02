@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ControllerService } from 'src/app/controller/controller.service';
 
@@ -15,15 +16,16 @@ export class CadastroComponent implements OnInit {
   errmsgshow = false;
   images:any = '';
 
-  constructor(public service:ControllerService,public router:Router, private http: HttpClient) {
+  constructor(public service:ControllerService,public router:Router, private http: HttpClient, private sanitization: DomSanitizer) {
     this.service.menuPrincipal = false;
     this.service.menuAutor = false;
    }
 
-  selectImage(event:any) {
+   selectImage(event:any) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.images = file;
+      console.log(this.images);
     }
   }
 
@@ -54,7 +56,7 @@ export class CadastroComponent implements OnInit {
     descricao: this.descricao,
     senha: this.senha,
     email: this.email,
-    cd_img_imagem: this.images.name
+    cd_img_autor: this.images.name
   }).subscribe((res) => {
     if (res.status == true) {
       alert("Cadastrado com sucesso!")
@@ -63,7 +65,7 @@ export class CadastroComponent implements OnInit {
       // console.log(this.images.name)
       this.router.navigate(['login']);
     } else {
-      alert('shii')
+      alert('Erro')
       this.errmsgshow = true;
       this.errmsg = res.msg;
     }

@@ -10,6 +10,7 @@ import { LivroDetalheComponent } from './view/livro-detalhe/livro-detalhe.compon
 import { LivrosCategoriaComponent } from './view/livros-categoria/livros-categoria.component';
 import { LivrosComponent } from './view/livros/livros.component';
 import { LoginAutorComponent } from './view/login-autor/login-autor.component';
+import { PerfilComponent } from './view/perfil/perfil.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path: 'autor', component: AutorDetalheComponent},
   {path: 'painel', component: AutorPainelComponent},
   {path: 'editar/:cd_livro', component: EditarLivroComponent},
-  {path: 'cadastro', component: CadastroComponent}
+  {path: 'cadastro', component: CadastroComponent},
+  {path: 'perfil', component: PerfilComponent}
 ];
 
 @NgModule({

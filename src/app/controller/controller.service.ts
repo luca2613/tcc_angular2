@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { CategoriaResponse } from '../model/Categoria';
 import { LivroResponse, Livro } from '../model/Livro';
-import { AutorResponse } from '../model/Autor';
+import { Autor, AutorResponse } from '../model/Autor';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -21,6 +21,7 @@ export class ControllerService {
   livroBusca: LivroResponse[] | null = null;
   livroAutor: LivroResponse[] | null = null;
   autor: AutorResponse[] | null = null;
+  autorProfile: Autor[] | null = null;
 
   constructor(private http:HttpClient) { }
 
@@ -58,12 +59,27 @@ export class ControllerService {
     return false;
   }
 
+  // autor
+
   getAutorById(id:any) {
     this.http.get<AutorResponse[]>(
       this.apiUrl + "/autor/" + id
     ).subscribe(
       (response) => {
         this.autor = response;
+      },
+    );
+    return false;
+  }
+
+  //autor
+
+  getAutorProfile(id:any) {
+    this.http.get<Autor[]>(
+      this.apiUrl + "/autor/perfil/" + id
+    ).subscribe(
+      (response) => {
+        this.autorProfile = response;
       },
     );
     return false;
