@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { CategoriaResponse } from '../model/Categoria';
-import { LivroResponse } from '../model/Livro';
+import { LivroResponse, Livro } from '../model/Livro';
 import { AutorResponse } from '../model/Autor';
 import { Observable } from 'rxjs';
 
@@ -18,14 +18,19 @@ export class ControllerService {
   categoria: CategoriaResponse[] | null = null;
   livro: LivroResponse[] | null = null;
   livroCategoria: LivroResponse[] | null = null;
+  livroBusca: LivroResponse[] | null = null;
   livroAutor: LivroResponse[] | null = null;
-  // autor: AutorResponse[] | null = null;
+  autor: AutorResponse[] | null = null;
 
   constructor(private http:HttpClient) { }
 
 
   login(data:any):Observable<any> {
     return this.http.post(`${this.apiUrl}/autor/login`,data);
+  }
+
+  cadastro(data:any):Observable<any> { 
+    return this.http.post(`${this.apiUrl}/autor/cadastro`,data);
   }
 
   getToken() {
@@ -48,6 +53,17 @@ export class ControllerService {
     ).subscribe(
       (response) => {
         this.categoria = response;
+      },
+    );
+    return false;
+  }
+
+  getAutorById(id:any) {
+    this.http.get<AutorResponse[]>(
+      this.apiUrl + "/autor/" + id
+    ).subscribe(
+      (response) => {
+        this.autor = response;
       },
     );
     return false;
@@ -98,6 +114,17 @@ export class ControllerService {
     return false;
   }
 
+  getLivroByBusca(busca:any) {
+    this.http.get<LivroResponse[]>(
+      this.apiUrl + "/livros/busca/" + busca
+    ).subscribe(
+      (Response) => {
+        this.livroBusca = Response;
+      }
+    )
+    return false;
+  }
+
   getLivrosByAutor(id:any) {
     this.http.get<LivroResponse[]>(
       this.apiUrl + "/livros/livrosAutor/" + id,
@@ -109,10 +136,41 @@ export class ControllerService {
     return false;
   }
 
+  postLivro(livroInfo: Livro){
+
+    const requestPkg: Livro = {
+      cd_autor: livroInfo.cd_autor,
+      cd_categoria: livroInfo.cd_categoria,
+      nm_livro: livroInfo.nm_livro,
+      ds_livro: livroInfo.ds_livro,
+      dt_lancamento: livroInfo.dt_lancamento,
+      cd_img_livro: livroInfo.cd_img_livro
+    };
+    console.log(requestPkg);
+
+    this.http.post<Livro>(
+      this.apiUrl + '/livros', requestPkg, {
+        headers: { 'Authorization': 'Bearer ' + this.getToken() },
+      },
+    ).subscribe(
+      (data) => {
+        this.getLivrosByAutor(this.getId());
+        alert("livro cadastrado!")
+      },
+      (error) => {
+        alert(error)
+      }
+    );
+  }
+
+  patchLivro(data:any,id:any):Observable<any> { 
+    return this.http.patch(`${this.apiUrl}/livros/${id}`,data, {headers: { 'Authorization': 'Bearer ' + this.getToken() }});
+  }
+
   deleteLivro( id: any, autor:any) {
     this.http.delete(
       this.apiUrl + '/livros/' + id, {
-        headers: { 'Authorization': 'Bearer ' + this.getToken() }
+        headers: { 'Authorization': 'Bearer ' + this.getToken() },
       }
     ).subscribe(
       (response) => {

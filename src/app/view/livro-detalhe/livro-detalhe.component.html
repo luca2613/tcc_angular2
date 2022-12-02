@@ -1,7 +1,7 @@
 <main  id="link1">
     <section *ngFor="let l of service.livro" class="section-livro">
         <div class='info-livro'>
-            <img src="../../assets/uploads/livro1.jpg" class="class-item-img" alt="">
+            <img src="http://localhost:3000/uploads/{{l.cd_img_livro}}" class="class-item-img" alt="">
             </div>
             <div class='info-livro'>
             <h1>{{l.nm_livro}}</h1>
@@ -14,14 +14,14 @@
         <h2>Livros recomendados</h2>
         <div class="containerLivros">
             <div *ngFor="let l of service.livroCategoria" class='livro'>
-                <a href='#'>
-                    <img src="../../assets/uploads/livro1.jpg" class="class-item-img" alt="">
+                <a [routerLink]="['/livro']" [queryParams]="{ id: l.cd_livro, nome: l.nm_livro, categoria: l.nm_categoria }">
+                    <img src="http://localhost:3000/uploads/{{l.cd_img_livro}}" class="class-item-img" alt="">
                 </a>
                 <div class='tituloLivro'><span>
                 <a [routerLink]="['/livro']" [queryParams]="{ id: l.cd_livro, nome: l.nm_livro, categoria: l.cd_categoria }">{{l.nm_livro}}</a>
                 </span></div>
                 <div class='autorLivro'>
-                    <span><a [routerLink]="['/livro', l.cd_livro,l.nm_livro]">{{l.nm_autor}}</a></span>
+                    <span><a [routerLink]="['/autor']" [queryParams]="{ id: l.cd_autor, nome: l.nm_autor}">{{l.nm_autor}}</a></span>
                 </div>
             </div>
         </div>

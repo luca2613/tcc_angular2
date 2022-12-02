@@ -10,11 +10,12 @@ import { ControllerService } from 'src/app/controller/controller.service';
 })
 export class LoginAutorComponent implements OnInit {
 
-  constructor(private service:ControllerService, private router: Router) { }
-
-  ngOnInit(): void {
+  constructor(private service:ControllerService, private router: Router) { 
     this.service.menuPrincipal = false;
     this.service.menuAutor = false;
+  }
+
+  ngOnInit(): void {
   }
 
   errmsg:any;

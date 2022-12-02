@@ -1,19 +1,18 @@
-<!-- <main  id="link1">
-    <section *ngFor="let l of service.livro" class="section-livro">
+<main  id="link1">
+    <section *ngFor="let a of service.autor" class="section-livro">
         <div class='info-livro'>
-            <img src="../../assets/uploads/livro1.jpg" class="class-item-img" alt="">
+            <img src="../../assets/uploads/autor1.jpg" class="class-item-img" alt="">
             </div>
             <div class='info-livro'>
-            <h1>{{l.nm_livro}}</h1>
-            <h2>{{l.nm_autor}}</h2>
-            <p>{{l.ds_livro}}</p>
+            <h1>{{a.nm_autor}}</h1>
+            <p>{{a.ds_autor}}</p>
         </div>
     </section>
 
     <section class="section-categoria">
-        <h2>Livros recomendados</h2>
+        <h2>Livros publicados</h2>
         <div class="containerLivros">
-            <div *ngFor="let l of service.livroCategoria" class='livro'>
+            <div *ngFor="let l of service.livroAutor" class='livro'>
                 <a href='#'>
                     <img src="../../assets/uploads/livro1.jpg" class="class-item-img" alt="">
                 </a>
@@ -26,4 +25,4 @@
             </div>
         </div>
     </section>
-</main> -->
+</main>

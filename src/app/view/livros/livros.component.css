@@ -5,7 +5,8 @@ h1 {
 }
 
 main {
-    margin: 20px;
+    margin: 20px auto;
+    width: 90%;
 }
 
 .containerLivros {
@@ -17,7 +18,7 @@ main {
 
 .livro {
     width: calc(1000px - 5);
-    max-width: 200px;
+    width: 200px;
     display: flex;
     margin: 10px;
     flex-direction: column;

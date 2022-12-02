@@ -9,11 +9,12 @@ import { ControllerService } from 'src/app/controller/controller.service';
 })
 export class LivrosComponent implements OnInit {
 
-  constructor(public service:ControllerService,public router:Router) { }
-
-  ngOnInit(): void {
+  constructor(public service:ControllerService,public router:Router) { 
     this.service.menuPrincipal = true;
     this.service.menuAutor = false;
+  }
+
+  ngOnInit(): void {
     this.service.getLivros();
   }
 

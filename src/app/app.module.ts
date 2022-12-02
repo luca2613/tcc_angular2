@@ -12,6 +12,9 @@ import { AutorDetalheComponent } from './view/autor-detalhe/autor-detalhe.compon
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ControllerService } from './controller/controller.service';
 import { AutorPainelComponent } from './view/autor-painel/autor-painel.component';
+import { EditarLivroComponent } from './view/editar-livro/editar-livro.component';
+import { LivroBuscaComponent } from './view/livro-busca/livro-busca.component';
+import { CadastroComponent } from './view/cadastro/cadastro.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { AutorPainelComponent } from './view/autor-painel/autor-painel.component
     LivrosCategoriaComponent,
     LoginAutorComponent,
     AutorDetalheComponent,
-    AutorPainelComponent
+    AutorPainelComponent,
+    EditarLivroComponent,
+    LivroBuscaComponent,
+    CadastroComponent
   ],
   imports: [
     BrowserModule,

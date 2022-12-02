@@ -10,16 +10,15 @@ import { ControllerService } from 'src/app/controller/controller.service';
 })
 export class LivroDetalheComponent implements OnInit {
 
-  constructor(public service:ControllerService,public router:ActivatedRoute) { }
+  constructor(public service:ControllerService,public router:ActivatedRoute) {
+    this.service.menuPrincipal = true;
+    this.service.menuAutor = false;
+   }
 
   id:string | null = null;
   categoria:string | null = null;
 
   ngOnInit(): void {
-
-    this.service.menuPrincipal = true;
-    this.service.menuAutor = false;
-
     this.router.queryParams.subscribe((params) => {
       this.id = params['id'];
       this.categoria = params['categoria'];

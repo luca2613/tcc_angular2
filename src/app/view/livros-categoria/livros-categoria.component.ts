@@ -11,15 +11,17 @@ export class LivrosCategoriaComponent implements OnInit {
 
   categoria:string | null = null;
 
-  constructor(public service:ControllerService,public router:ActivatedRoute) { }
-
-  ngOnInit(): void {
+  constructor(public service:ControllerService,public router:ActivatedRoute) { 
     this.service.menuPrincipal = true;
     this.service.menuAutor = false;
+  }
+
+  ngOnInit(): void {
     this.router.paramMap.subscribe((params) => {
-      this.categoria = params.get('nm_categoria');
+      this.categoria = this.router.snapshot.paramMap.get("nm_categoria");
+      this.service.getLivroByCategoria(this.categoria);
     });
-    this.service.getLivroByCategoria(this.categoria);
+   
     
   }
 
